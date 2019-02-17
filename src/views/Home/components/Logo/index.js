@@ -1,14 +1,15 @@
 import React from 'react';
 
-import logoSvg from './images/Logo.svg'
+import Highlight from '~/components/Highlight'
 
+import logoSvg from './images/Logo.svg'
 import styles from './styles.scss';
 
 const Logo = props => (
-   <div className="center">
+   <div className={styles.logoSection}>
       <img src={logoSvg} alt="Marcossi" />
-      <h1>Marcossi</h1>
-      <h3 className="highlighted">Design as a story</h3>
+      <h1 className="weight-bold">Marcossi</h1>
+      <Highlight><h3>Design as a story</h3></Highlight>
    </div>
 )
 
