@@ -15,10 +15,10 @@ export default class Contact extends React.Component {
       value: null,
    }
 
-   componentDidMount() => {
+   componentDidMount = () => {
    }
 
-   componentWillUnmount() => {
+   componentWillUnmount = () => {
    }
 
    render() {
