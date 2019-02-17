@@ -8,7 +8,7 @@ import styles from './styles.scss';
 const Logo = props => (
    <div className={styles.logoSection}>
       <img src={logoSvg} alt="Marcossi" />
-      <h1 className="weight-bold">Marcossi</h1>
+      <h1 className="weight-medium">Marcossi</h1>
       <Highlight><h3>Design as a story</h3></Highlight>
    </div>
 )
