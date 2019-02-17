@@ -5,7 +5,7 @@ export const AppContext = React.createContext({
    title: 'Marcossi Design',
    locale: 'en-US',
    setTitle: () => { },
-   setLocale: () => { },
+   setLocale: () => { }
 });
 
 export const withContext = Component => props => (
