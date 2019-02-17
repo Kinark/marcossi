@@ -15,10 +15,10 @@ export default class Portfolio extends React.Component {
       value: null,
    }
 
-   componentDidMount() => {
+   componentDidMount = () => {
    }
 
-   componentWillUnmount() => {
+   componentWillUnmount = () => {
    }
 
    render() {
