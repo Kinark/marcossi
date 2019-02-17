@@ -1,18 +1,24 @@
 import React from 'react';
 
+import { AppContext } from '~/instances/context';
+
 import Highlight from '~/components/Highlight'
 
 import logoSvg from './images/Logo.svg'
 import styles from './styles.scss';
 
 const Logo = () => (
-   <div className={`${styles.logoSection} titles-color`}>
-      <div className="container">
-         <img src={logoSvg} alt="Marcossi" />
-         <h1 className="weight-medium">Marcossi</h1>
-         <Highlight><h3>Design as a story</h3></Highlight>
-      </div>
-   </div>
+   <AppContext.Consumer>
+      {({ data }) => (
+         <div className={`${styles.logoSection} titles-color`}>
+            <div className="container">
+               <img src={logoSvg} alt="Marcossi" />
+               <h1 className="weight-medium">{data.logo.title}</h1>
+               <Highlight><h3>{data.logo.subtitle}</h3></Highlight>
+            </div>
+         </div>
+      )}
+   </AppContext.Consumer>
 )
 
 Logo.propTypes = {
