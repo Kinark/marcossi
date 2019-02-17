@@ -12,7 +12,7 @@ const Introduction = () => (
          <div className={styles.introductionSection}>
             <div className="container">
                <div className="row">
-                  <div className="col xs12 l5 xl4 offset-xl1">
+                  <div className="col xs12 l5 xl4 offset-xl1 center">
                      <img className={styles.igorIllustration} src={Igor} alt="Igor's Face" />
                   </div>
                   <div className="col xs12 l7 xl6">
