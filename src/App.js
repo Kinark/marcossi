@@ -17,7 +17,7 @@ const description = 'A sample website.';
 class App extends React.Component {
    state = {
       data: {},
-      title: 'The Last Flame',
+      title: 'Marcossi Design',
       locale: 'en-US',
       loading: true
    }
@@ -38,8 +38,7 @@ class App extends React.Component {
          .then(({ items }) => {
             const data = {}
             items.forEach(entry => { data[entry.fields.pageName] = entry.fields.data });
-            this.setState({ data, loading: false });
-            return console.log(data)
+            return this.setState({ data, loading: false });
          })
          .catch(console.error)
    }
@@ -54,17 +53,16 @@ class App extends React.Component {
       if (loading) return <div>Loading...</div>
       return (
          <AppContext.Provider value={{ data, title, locale, setTitle, setLocale }}>
-            <div className="container">
-               <Metas title={title} description={description} />
-               <Favicon />
-               Hey
+            <Metas title={title} description={description} />
+            <Favicon />
+            Hey
                <button type="button" onClick={() => setLocale('pt-BR')}>Change pt-BR</button>
-               <button type="button" onClick={() => setLocale('en-US')}>Change en-US</button>
-               <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/story" component={Story} />
-               </Switch>
-            </div>
+            <button type="button" onClick={() => setLocale('en-US')}>Change en-US</button>
+            <Switch>
+               <Route exact path="/" component={Home} />
+               <Route exact path="/story" component={Story} />
+            </Switch>
+            <div className="screen-detector" />
          </AppContext.Provider>
       )
    }
