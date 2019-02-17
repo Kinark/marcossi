@@ -1,16 +1,30 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import renderHTML from 'react-render-html';
 
+import { AppContext } from '~/instances/context';
+
+import Igor from './images/Igor.svg'
 import styles from './styles.scss';
 
-const Introduction = props => (
-   <div>
-      Introduction
-   </div>
+const Introduction = () => (
+   <AppContext.Consumer>
+      {({ data }) => (
+         <div className={styles.introductionSection}>
+            <div className="container">
+               <div className="row">
+                  <div className="col xs12 l5 xl4 offset-xl1">
+                     <img className={styles.igorIllustration} src={Igor} alt="Igor's Face" />
+                  </div>
+                  <div className="col xs12 l7 xl6">
+                     <h2 className="weight-medium titles-color">{renderHTML(data.introduction.title)}</h2>
+                     <h3 className="weight-light titles-color">{renderHTML(data.introduction.subtitle)}</h3>
+                     <div className="weight-light long-text">{renderHTML(data.introduction.text)}</div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      )}
+   </AppContext.Consumer>
 )
-
-Introduction.propTypes = {
-
-}
 
 export default Introduction

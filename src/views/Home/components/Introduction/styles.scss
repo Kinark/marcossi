@@ -1,0 +1,10 @@
+.introductionSection {
+   background-color: #EBEDFF;
+   img.igorIllustration {
+      margin: -40px 0 -40px 0;
+      @media only screen and (max-width: 792px) {
+         margin-bottom: 20px;
+         margin-top: 30px;
+      }
+   }
+}
