@@ -39,9 +39,9 @@ module.exports = merge.smart({
       new ImageminPlugin(ImageminPluginConfig),
       new ManifestPlugin(ManifestPluginConfig),
       new MiniCssExtractPlugin({ filename: 'static/css/[name].css', chunkFilename: '[id].css' }),
-      new PurifyCSSPlugin({
-         paths: glob.sync(path.join(__dirname, '../src/**/*.js')),
-         purifyOptions: { info: true, minify: true, whitelist: ['*purify*'] }
-      }),
+      // new PurifyCSSPlugin({
+      //    paths: glob.sync(path.join(__dirname, '../src/**/*.js')),
+      //    purifyOptions: { info: true, minify: true, whitelist: ['*purify*'] }
+      // }),
    ],
 }, common);
