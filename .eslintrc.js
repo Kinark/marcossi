@@ -12,6 +12,7 @@ module.exports = {
       node: true
    },
    rules: {
+      'react/no-array-index-key': 'off',
       'no-plusplus': 'off',
       'class-methods-use-this': [0, { exceptMethods: ['getDataFromRpc'] }],
       'max-len': 0,
