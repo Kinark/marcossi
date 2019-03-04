@@ -2,12 +2,21 @@ import React from 'react';
 import { hot } from 'react-hot-loader'
 import { Route, Switch } from 'react-router-dom'
 
+//
+// ─── COMPONENTS ─────────────────────────────────────────────────────────────────
+//
 import { Metas } from '~/components/Metas';
 import Favicon from '~/components/Favicon';
 
+//
+// ─── VIEWS ──────────────────────────────────────────────────────────────────────
+//
 import Home from '~/views/Home';
 import Story from '~/views/Story';
 
+//
+// ─── INSTANCES ──────────────────────────────────────────────────────────────────
+//
 import { AppContext } from '~/instances/context';
 import contentfulClient from '~/instances/contentfulClient';
 
