@@ -3,6 +3,8 @@ import renderHTML from 'react-render-html';
 
 import { AppContext } from '~/instances/context';
 
+import { TwistsOnHover } from '~/components/Twists';
+
 import LetterSvg from './images/Letter.svg'
 // import styles from './styles.scss';
 
@@ -17,7 +19,7 @@ const Letter = () => (
                   <div className="right-align">{data.letter.credits}</div>
                </div>
                <div className="col xs12 l5 xl6 xs-first l-last center">
-                  <img src={LetterSvg} alt="A Letter" />
+                  <TwistsOnHover><img src={LetterSvg} alt="A Letter" /></TwistsOnHover>
                </div>
             </div>
          </div>
