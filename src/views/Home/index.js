@@ -11,15 +11,14 @@ import Contact from './components/Contact'
 import styles from './styles.scss';
 
 const Home = props => (
-   <div>
-      Home
+   <React.Fragment>
       <Logo />
       <Introduction />
       <Letter />
       <Features />
       <Portfolio />
       <Contact />
-   </div>
+   </React.Fragment>
 )
 
 Home.propTypes = {
