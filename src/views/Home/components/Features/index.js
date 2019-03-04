@@ -5,7 +5,7 @@ import { AppContext } from '~/instances/context';
 
 import SectionTitle from '~/components/SectionTitle'
 import Highlight from '~/components/Highlight'
-
+import { TwistsOnHover } from '~/components/Twists';
 
 import World from './images/World.svg'
 import Artboard from './images/Artboard.svg'
@@ -19,24 +19,20 @@ const Features = () => (
          <div className="container center">
             <SectionTitle title={data.features.title} subtitle={data.features.subtitle} />
             <div className="row xs-row">
-               <Feature img={World} title={data.features.site.title} description={data.features.site.subtitle}/>
-               <Feature img={Artboard} title={data.features.branding.title} description={data.features.branding.subtitle}/>
-               <Feature img={Toolbox} title={data.features.apps.title} description={data.features.apps.subtitle}/>
+               <Feature img={World} title={data.features.site.title} description={data.features.site.subtitle} />
+               <Feature img={Artboard} title={data.features.branding.title} description={data.features.branding.subtitle} />
+               <Feature img={Toolbox} title={data.features.apps.title} description={data.features.apps.subtitle} />
             </div>
          </div>
       )}
    </AppContext.Consumer>
 )
 
-Features.propTypes = {
-
-}
-
 export default Features
 
 const Feature = ({ img, title, description }) => (
    <div className="col xs12 m4">
-      <div className={styles.featureImgContainer}><img className="block" src={img} alt={title} /></div>
+      <div className={styles.featureImgContainer}><TwistsOnHover><img className="block" src={img} alt={title} /></TwistsOnHover></div>
       <Highlight><h3 className="weight-medium">{title}</h3></Highlight>
       <p>{description}</p>
    </div>
