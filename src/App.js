@@ -28,18 +28,26 @@ class App extends React.Component {
 
    componentDidUpdate = (prevProps, prevState) => {
       const { locale } = this.state
+      // If user change website language, fetch new data
       if (prevState.locale !== locale) this.fetchAndSetAppData()
    }
 
    fetchAndSetAppData = () => {
       const { locale } = this.state
+      // Turn loading on
       this.setState({ loading: true })
+      // Contact contentfulClient to get the pages entries
       contentfulClient.getEntries({ content_type: 'page', locale })
+         // If found, proceed
          .then(({ items }) => {
+            // Create an empty object
             const data = {}
+            // Extracts each page for it's own object
             items.forEach(entry => { data[entry.fields.pageName] = entry.fields.data });
+            // Set pages data and loading off
             return this.setState({ data, loading: false });
          })
+         // Catch any error
          .catch(console.error)
    }
 
