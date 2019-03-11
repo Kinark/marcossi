@@ -72,9 +72,10 @@ class App extends React.Component {
          <AppContext.Provider value={{ data, title, locale, setTitle, setLocale }}>
             {/* <Metas title={title} description={description} /> */}
             {/* <Favicon /> */}
-            Hey
+            <div style={{ position: 'fixed', top: 0 }}>
                <button type="button" onClick={() => setLocale('pt-BR')}>Change pt-BR</button>
-            <button type="button" onClick={() => setLocale('en-US')}>Change en-US</button>
+               <button type="button" onClick={() => setLocale('en-US')}>Change en-US</button>
+            </div>
             <Switch>
                <Route exact path="/" component={Home} />
                <Route exact path="/story" component={Story} />
