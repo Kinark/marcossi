@@ -18,10 +18,14 @@ const Features = () => (
       {({ data }) => (
          <div className="container center">
             <SectionTitle title={data.features.title} subtitle={data.features.subtitle} />
-            <div className="row xs-row">
-               <Feature img={World} title={data.features.site.title} description={data.features.site.subtitle} />
-               <Feature img={Artboard} title={data.features.branding.title} description={data.features.branding.subtitle} />
-               <Feature img={Toolbox} title={data.features.apps.title} description={data.features.apps.subtitle} />
+            <div className="row">
+               <div className="col xs12 xl10 offset-xl1">
+                  <div className="row xs-row">
+                     <Feature img={World} title={data.features.site.title} description={data.features.site.subtitle} />
+                     <Feature img={Artboard} title={data.features.branding.title} description={data.features.branding.subtitle} />
+                     <Feature img={Toolbox} title={data.features.apps.title} description={data.features.apps.subtitle} />
+                  </div>
+               </div>
             </div>
          </div>
       )}
