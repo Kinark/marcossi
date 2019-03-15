@@ -14,7 +14,7 @@ import Storie from './components/Storie'
 import { withContext } from '~/instances/context';
 import contentfulClient from '~/instances/contentfulClient';
 
-import styles from './styles.scss';
+// import styles from './styles.scss';
 
 class Portfolio extends React.Component {
    static propTypes = {
