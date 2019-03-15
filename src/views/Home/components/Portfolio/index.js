@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import speakingurl from 'speakingurl';
-
 
 //
 // ─── COMPONENTS ─────────────────────────────────────────────────────────────────
@@ -47,7 +45,7 @@ class Portfolio extends React.Component {
       // Contact contentfulClient to get the pages entries
       contentfulClient.getEntries({ content_type: 'storie', locale: context.locale })
          // If found, proceed
-         .then(({ items: stories }) => { console.log(stories); this.setState({ stories, loading: false }) })
+         .then(({ items: stories }) => { console.log(stories); return this.setState({ stories, loading: false }) })
          // Catch any error
          .catch(console.error)
    }
@@ -61,7 +59,11 @@ class Portfolio extends React.Component {
             <div className="center">
                <SectionTitle title={context.data.portfolio.title} subtitle={context.data.portfolio.subtitle} />
             </div>
-            {stories.map(storie => <Link key={storie.sys.id} to={`/story/${speakingurl(storie.fields.title)}/${storie.sys.id}`}><Storie data={storie.fields} /></Link>)}
+            <div className="row">
+               {stories.map(storie => (
+                  <Storie to={`/story/${speakingurl(storie.fields.title)}/${storie.sys.id}`} data={storie.fields} />
+               ))}
+            </div>
          </div>
       );
    }
