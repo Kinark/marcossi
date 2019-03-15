@@ -7,6 +7,7 @@ import speakingurl from 'speakingurl';
 //
 import SectionTitle from '~/components/SectionTitle'
 import Storie from './components/Storie'
+import Tale from './components/Tale'
 
 //
 // ─── INSTANCES ──────────────────────────────────────────────────────────────────
@@ -60,9 +61,11 @@ class Portfolio extends React.Component {
                <SectionTitle title={context.data.portfolio.title} subtitle={context.data.portfolio.subtitle} />
             </div>
             <div className="row">
-               {stories.map(storie => (
-                  <Storie to={`/story/${speakingurl(storie.fields.title)}/${storie.sys.id}`} key={storie.sys.id} data={storie.fields} />
-               ))}
+               {stories.map(storie => (storie.fields.type === 'storie'
+                  ? <Storie to={`/story/${speakingurl(storie.fields.title)}/${storie.sys.id}`} key={storie.sys.id} data={storie.fields} />
+                  : <Tale to={`/story/${speakingurl(storie.fields.title)}/${storie.sys.id}`} key={storie.sys.id} data={storie.fields} />
+               ))
+               }
             </div>
          </div>
       );
