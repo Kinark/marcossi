@@ -10,10 +10,14 @@ $link-color: color("light-blue", "darken-1") !default;
 // 2. Media queries
 // ==========================================================================
 // Media Query Ranges (last value before change)
-$extra-small-screen-max: 549px !default;
-$small-screen-max: 612px !default;
-$medium-screen-max: 792px !default;
-$large-screen-max: 959px !default;
+// $extra-small-screen-max: 549px !default;
+// $small-screen-max: 612px !default;
+// $medium-screen-max: 792px !default;
+// $large-screen-max: 959px !default;
+$extra-small-screen-max: 575px !default;
+$small-screen-max: 767px !default;
+$medium-screen-max: 991px !default;
+$large-screen-max: 1199px !default;
 // extra-large-screen > large-screen
 // Beginning of each screan (min values of each one)
 $small-screen-min: $extra-small-screen-max+1 !default;
