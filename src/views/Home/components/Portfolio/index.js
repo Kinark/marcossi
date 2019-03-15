@@ -61,7 +61,7 @@ class Portfolio extends React.Component {
             </div>
             <div className="row">
                {stories.map(storie => (
-                  <Storie to={`/story/${speakingurl(storie.fields.title)}/${storie.sys.id}`} data={storie.fields} />
+                  <Storie to={`/story/${speakingurl(storie.fields.title)}/${storie.sys.id}`} key={storie.sys.id} data={storie.fields} />
                ))}
             </div>
          </div>
