@@ -20,13 +20,9 @@ import contentfulClient from '~/instances/contentfulClient';
 class Portfolio extends React.Component {
    static propTypes = {
       context: PropTypes.shape({
+         setStoriesData: PropTypes.func,
          locale: PropTypes.string,
       }).isRequired,
-   }
-
-   state = {
-      stories: [],
-      loading: true
    }
 
    componentDidMount = () => {
@@ -46,22 +42,21 @@ class Portfolio extends React.Component {
       // Contact contentfulClient to get the pages entries
       contentfulClient.getEntries({ content_type: 'storie', locale: context.locale })
          // If found, proceed
-         .then(({ items: stories }) => { console.log(stories); return this.setState({ stories, loading: false }) })
+         .then(({ items: stories }) => context.setStoriesData(stories))
          // Catch any error
          .catch(console.error)
    }
 
    render() {
-      const { loading, stories } = this.state
       const { context } = this.props
-      if (loading) return <div>Loading...</div>
+      if (!context.storiesData.length) return <div>Loading...</div>
       return (
          <div className="container">
             <div className="center">
                <SectionTitle title={context.data.portfolio.title} subtitle={context.data.portfolio.subtitle} />
             </div>
             <div className="row">
-               {stories.map(storie => (storie.fields.type === 'storie'
+               {context.storiesData.map(storie => (storie.fields.type === 'storie'
                   ? <Storie to={`/story/${speakingurl(storie.fields.title)}/${storie.sys.id}`} key={storie.sys.id} data={storie.fields} />
                   : <Tale to={`/story/${speakingurl(storie.fields.title)}/${storie.sys.id}`} key={storie.sys.id} data={storie.fields} />
                ))
