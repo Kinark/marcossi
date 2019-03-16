@@ -37,8 +37,6 @@ class Portfolio extends React.Component {
 
    fetchAndSetStories = () => {
       const { context } = this.props
-      // Turn loading on
-      this.setState({ loading: true })
       // Contact contentfulClient to get the pages entries
       contentfulClient.getEntries({ content_type: 'storie', locale: context.locale })
          // If found, proceed
