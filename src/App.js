@@ -26,6 +26,7 @@ const description = 'A sample website.';
 class App extends React.Component {
    state = {
       data: {},
+      storiesData: [],
       title: 'Marcossi Design',
       locale: 'en-US',
       loading: true
@@ -60,16 +61,18 @@ class App extends React.Component {
          .catch(console.error)
    }
 
+   setStoriesData = storiesData => this.setState({ storiesData })
+
    setTitle = title => this.setState({ title })
 
    setLocale = locale => this.setState({ locale })
 
    render() {
-      const { setTitle, setLocale, state } = this;
-      const { data, title, locale, loading } = state
+      const { setStoriesData, setTitle, setLocale, state } = this;
+      const { data, storiesData, title, locale, loading } = state
       if (loading) return <div>Loading...</div>
       return (
-         <AppContext.Provider value={{ data, title, locale, setTitle, setLocale }}>
+         <AppContext.Provider value={{ data, storiesData, title, locale, setStoriesData, setTitle, setLocale }}>
             {/* <Metas title={title} description={description} /> */}
             {/* <Favicon /> */}
             <div style={{ position: 'fixed', top: 0 }}>

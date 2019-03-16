@@ -2,6 +2,7 @@ import React from 'react';
 
 export const AppContext = React.createContext({
    data: {},
+   storiesData: [],
    title: 'Marcossi Design',
    locale: 'en-US',
    setTitle: () => { },
