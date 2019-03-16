@@ -20,6 +20,7 @@ import contentfulClient from '~/instances/contentfulClient';
 class Portfolio extends React.Component {
    static propTypes = {
       context: PropTypes.shape({
+         storiesData: PropTypes.array,
          setStoriesData: PropTypes.func,
          locale: PropTypes.string,
       }).isRequired,
