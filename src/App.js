@@ -76,10 +76,8 @@ class App extends React.Component {
                <button type="button" onClick={() => setLocale('pt-BR')}>Change pt-BR</button>
                <button type="button" onClick={() => setLocale('en-US')}>Change en-US</button>
             </div>
-            <Switch>
-               <Route path="/" component={Home} />
-               <Route exact path="/story/:name/:id" component={Story} />
-            </Switch>
+            <Route path="/" component={Home} />
+            <Route exact path="/story/:name/:id" component={Story} />
             <div className="screen-detector" />
          </AppContext.Provider>
       )
