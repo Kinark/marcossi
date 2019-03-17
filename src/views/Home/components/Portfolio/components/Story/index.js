@@ -4,21 +4,22 @@ import { Link } from 'react-router-dom';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import renderHTML from 'react-render-html';
 
+import { Card, CardContent } from '~/components/Card'
 
 import styles from './styles.scss';
 
 const Story = ({ data, to }) => (
-   <div className="col xs12 l12 xl8">
+   <div className={`col xs12 l12 ${data.type === 'tale' ? 'xl4' : 'xl8'}`}>
       <Link to={to}>
-         <div className={styles.story}>
+         <Card className={`${styles.story} ${data.type === 'tale' ? styles.tale : ''}`}>
             <div className={styles.cover}>
                <img src={data.cover.fields.file.url} alt={data.cover.fields.title} />
             </div>
-            <div className={styles.content}>
+            <CardContent className={styles.content}>
                <h2 className="titles-color weight-medium">{data.title}</h2>
                <div className="long-text">{renderHTML(documentToHtmlString(data.excerpt))}</div>
-            </div>
-         </div>
+            </CardContent>
+         </Card>
       </Link>
    </div>
 )
