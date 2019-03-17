@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import renderHTML from 'react-render-html';
+import Carousel from 'nuka-carousel';
 
 //
 // ─── INSTANCES ──────────────────────────────────────────────────────────────────
@@ -11,12 +12,6 @@ import renderHTML from 'react-render-html';
 import { withContext } from '~/instances/context';
 
 import styles from './styles.scss';
-
-const options = {
-   renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: node => `<img className="${styles.asset}" src="${node.data.target.fields.file.url}" alt="" />`
-   },
-}
 
 class Story extends React.Component {
    static propTypes = {
@@ -74,17 +69,15 @@ class Story extends React.Component {
 
       if (goBackHome) return <Redirect to="/" />
       if (loading) return <div>Loading...</div>
+      console.log(story.fields)
       return (
          // eslint-disable-next-line jsx-a11y/click-events-have-key-events
          <div role="button" tabIndex="-1" className={styles.storyModalDim} onClick={this.modalDismissClickHandler}>
             <div className={styles.storyModal}>
-               <div className="center">
-                  <img src={story.fields.logo.fields.file.url} alt={story.fields.title} width="250" />
-                  <h2 className="titles-color weight-medium">{story.fields.title}</h2>
-               </div>
-               <div className={`long-text ${styles.post}`}>
-                  {renderHTML(documentToHtmlString(story.fields.post, options))}
-               </div>
+               {story.fields.type === 'story'
+                  ? <StoryContent data={story.fields} />
+                  : <TaleContent data={story.fields} />
+               }
             </div>
          </div>
       );
@@ -92,3 +85,44 @@ class Story extends React.Component {
 }
 
 export default withContext(Story)
+
+const storyRenderOptions = {
+   renderNode: {
+      [BLOCKS.EMBEDDED_ASSET]: node => `<img className="${styles.asset}" src="${node.data.target.fields.file.url}" alt="" />`
+   },
+}
+
+const StoryContent = ({ data }) => (
+   <React.Fragment>
+      <div className="center">
+         <img src={data.logo.fields.file.url} alt={data.title} width="250" />
+         <h2 className="titles-color weight-medium">{data.title}</h2>
+      </div>
+      <div className={`long-text ${styles.post}`}>
+         {renderHTML(documentToHtmlString(data.post, storyRenderOptions))}
+      </div>
+   </React.Fragment>
+)
+
+StoryContent.propTypes = {
+   data: PropTypes.shape({}).isRequired,
+}
+
+const TaleContent = ({ data }) => (
+   <React.Fragment>
+      <div className="center">
+         <img src={data.logo.fields.file.url} alt={data.title} width="250" />
+         <h2 className="titles-color weight-medium">{data.title}</h2>
+      </div>
+      <div className={`long-text ${styles.post}`}>
+         {renderHTML(documentToHtmlString(data.excerpt))}
+      </div>
+      <Carousel>
+         {data.gallery.map(picture => <img key={picture.sys.id} src={picture.fields.file.url} alt="" />)}
+      </Carousel>
+   </React.Fragment>
+)
+
+TaleContent.propTypes = {
+   data: PropTypes.shape({}).isRequired,
+}
