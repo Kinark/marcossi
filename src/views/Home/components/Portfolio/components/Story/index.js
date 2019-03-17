@@ -7,10 +7,10 @@ import renderHTML from 'react-render-html';
 
 import styles from './styles.scss';
 
-const Storie = ({ data, to }) => (
+const Story = ({ data, to }) => (
    <div className="col xs12 l12 xl8">
       <Link to={to}>
-         <div className={styles.storie}>
+         <div className={styles.story}>
             <div className={styles.cover}>
                <img src={data.cover.fields.file.url} alt={data.cover.fields.title} />
             </div>
@@ -23,10 +23,10 @@ const Storie = ({ data, to }) => (
    </div>
 )
 
-Storie.propTypes = {
+Story.propTypes = {
    data: PropTypes.shape({}).isRequired,
    to: PropTypes.string.isRequired,
 }
 
 
-export default Storie
+export default Story
