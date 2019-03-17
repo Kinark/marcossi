@@ -44,8 +44,6 @@ class App extends React.Component {
 
    fetchAndSetAppData = () => {
       const { locale } = this.state
-      // Turn loading on
-      this.setState({ loading: true })
       // Contact contentfulClient to get the pages entries
       contentfulClient.getEntries({ content_type: 'page', locale })
          // If found, proceed
