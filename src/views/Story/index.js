@@ -14,7 +14,7 @@ import styles from './styles.scss';
 
 const options = {
    renderNode: {
-      [BLOCKS.EMBEDDED_ASSET]: node => `<img src="${node.data.target.fields.file.url}" alt="" />`
+      [BLOCKS.EMBEDDED_ASSET]: node => `<img className="${styles.asset}" src="${node.data.target.fields.file.url}" alt="" />`
    },
 }
 
