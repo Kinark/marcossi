@@ -58,8 +58,6 @@ class Story extends React.Component {
 
    getStoryFromContext = async () => {
       const { context, match } = this.props
-      // Turn loading on
-      await this.setState({ loading: true })
       if (!context.storiesData.length) return false;
       await this.setState({ story: context.storiesData.find(story => story.sys.id === match.params.id) })
       this.setState({ loading: false })
