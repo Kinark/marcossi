@@ -38,7 +38,7 @@ class Story extends React.Component {
    }
 
    componentDidMount = () => {
-      document.body.style.marginRight = window.innerWidth - document.documentElement.clientWidth
+      document.body.style.marginRight = `${window.innerWidth - document.documentElement.clientWidth}px`
       document.body.style.overflowY = 'hidden'
       document.addEventListener('keydown', this.modalKeyPressHandler, false);
       this.getStoryFromContext()
