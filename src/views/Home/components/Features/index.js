@@ -36,7 +36,7 @@ export default Features
 
 const Feature = ({ img, title, description }) => (
    <div className="col xs12 m4">
-      <div className={styles.featureImgContainer}><TwistsOnHover><img className="block" src={img} alt={title} /></TwistsOnHover></div>
+      <div className={styles.featureImgContainer}><img className="block" src={img} alt={title} /></div>
       <Highlight><h3 className="weight-medium">{title}</h3></Highlight>
       <p>{description}</p>
    </div>
