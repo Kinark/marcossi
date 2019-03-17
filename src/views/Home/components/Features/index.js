@@ -5,7 +5,6 @@ import { AppContext } from '~/instances/context';
 
 import SectionTitle from '~/components/SectionTitle'
 import Highlight from '~/components/Highlight'
-import { TwistsOnHover } from '~/components/Twists';
 
 import World from './images/World.svg'
 import Artboard from './images/Artboard.svg'
