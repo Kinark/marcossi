@@ -118,7 +118,7 @@ const TaleContent = ({ data }) => (
          {renderHTML(documentToHtmlString(data.excerpt))}
       </div>
       <Carousel>
-         {data.gallery.map(picture => <img key={picture.sys.id} src={picture.fields.file.url} alt="" />)}
+         {data.gallery.map(picture => <img onLoad={() => { window.dispatchEvent(new Event('resize')); }} key={picture.sys.id} src={picture.fields.file.url} alt="" />)}
       </Carousel>
    </React.Fragment>
 )
