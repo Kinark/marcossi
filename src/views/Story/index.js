@@ -67,17 +67,18 @@ class Story extends React.Component {
 
    goBackHome = () => this.setState({ goBackHome: true })
 
+   modalDismissClickHandler = (e) => { if (e.target.getAttribute('role') === 'button') return this.goBackHome() }
+
    modalKeyPressHandler = (e) => { if (e.keyCode === 27) this.goBackHome() }
 
    render() {
       const { loading, story, goBackHome } = this.state
-      // const { context } = this.props
 
       if (goBackHome) return <Redirect to="/" />
       if (loading) return <div>Loading...</div>
       return (
-         <div className={styles.storyModalDim}>
-            <button type="button" className={styles.dismiss} onClick={this.goBackHome} />
+         // eslint-disable-next-line jsx-a11y/click-events-have-key-events
+         <div role="button" tabIndex="-1" className={styles.storyModalDim} onClick={this.modalDismissClickHandler}>
             <div className={styles.storyModal}>
                <div className="center">
                   <img src={story.fields.logo.fields.file.url} alt={story.fields.title} width="250" />
