@@ -16,7 +16,7 @@ const Story = ({ data, to }) => (
                <img src={data.cover.fields.file.url} alt={data.cover.fields.title} />
             </div>
             <CardContent className={styles.content}>
-               <h2 className="titles-color weight-medium">{data.title}</h2>
+               <h2 className="titles-color weight-medium no-mrg-top">{data.title}</h2>
                <div className="long-text">{renderHTML(documentToHtmlString(data.excerpt))}</div>
             </CardContent>
          </Card>
