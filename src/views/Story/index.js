@@ -27,7 +27,7 @@ class Story extends React.Component {
    }
 
    state = {
-      story: null,
+      storyIndex: null,
       loading: true,
       goBackHome: false
    }
@@ -54,7 +54,7 @@ class Story extends React.Component {
    getStoryFromContext = async () => {
       const { context, match } = this.props
       if (!context.storiesData.length) return false;
-      await this.setState({ story: context.storiesData.find(story => story.sys.id === match.params.id) })
+      await this.setState({ storyIndex: context.storiesData.findIndex(story => story.sys.id === match.params.id) })
       this.setState({ loading: false })
    }
 
@@ -65,18 +65,18 @@ class Story extends React.Component {
    modalKeyPressHandler = (e) => { if (e.keyCode === 27) this.goBackHome() }
 
    render() {
-      const { loading, story, goBackHome } = this.state
+      const { loading, storyIndex, goBackHome } = this.state
+      const { context } = this.props
 
       if (goBackHome) return <Redirect to="/" />
       if (loading) return <div>Loading...</div>
-      console.log(story.fields)
       return (
          // eslint-disable-next-line jsx-a11y/click-events-have-key-events
          <div role="button" tabIndex="-1" className={styles.storyModalDim} onClick={this.modalDismissClickHandler}>
             <div className={styles.storyModal}>
-               {story.fields.type === 'story'
-                  ? <StoryContent data={story.fields} />
-                  : <TaleContent data={story.fields} />
+               {context.storiesData[storyIndex].fields.type === 'story'
+                  ? <StoryContent data={context.storiesData[storyIndex].fields} />
+                  : <TaleContent data={context.storiesData[storyIndex].fields} />
                }
             </div>
          </div>
