@@ -33,35 +33,44 @@ class Story extends React.Component {
    }
 
    componentDidMount = () => {
+      // Hides the body scrollbar gracefully
       document.body.style.marginRight = `${window.innerWidth - document.documentElement.clientWidth}px`
       document.body.style.overflowY = 'hidden'
+      // Adds a listener to keydown event to enable Esc to dismiss the modal
       document.addEventListener('keydown', this.modalKeyPressHandler, false);
       this.getStoryFromContext()
    }
 
    componentDidUpdate = prevProps => {
       const { context } = this.props
-      // If user change website language, fetch new data
+      // Wait for the context.storiesData to be loaded
       if (!prevProps.context.storiesData.length && context.storiesData.length) this.getStoryFromContext()
    }
 
    componentWillUnmount = () => {
+      // Brings back the body scrollbar
       document.body.style.marginRight = null
       document.body.style.overflowY = null
+      // Removes the listener from the keydown event
       document.removeEventListener('keydown', this.modalKeyPressHandler, false);
    };
 
    getStoryFromContext = async () => {
       const { context, match } = this.props
+      // Stops if context.storiesData is empty
       if (!context.storiesData.length) return false;
+      // Finds the right Story ID
       await this.setState({ storyIndex: context.storiesData.findIndex(story => story.sys.id === match.params.id) })
+      // Turns loading false
       this.setState({ loading: false })
    }
 
    goBackHome = () => this.setState({ goBackHome: true })
 
+   // Handles clicks on the background to dismiss the modal
    modalDismissClickHandler = (e) => { if (e.target.getAttribute('role') === 'button') return this.goBackHome() }
 
+   // Handles Esc press to dismiss the modal
    modalKeyPressHandler = (e) => { if (e.keyCode === 27) this.goBackHome() }
 
    render() {
