@@ -40,7 +40,7 @@ class Portfolio extends React.Component {
       // Contact contentfulClient to get the pages entries
       contentfulClient.getEntries({ content_type: 'storie', locale: context.locale })
          // If found, proceed
-         .then(({ items: stories }) => context.setStoriesData(stories))
+         .then(({ items: stories }) => context.setStoriesData(stories.sort((a, b) => a.fields.order - b.fields.order)))
          // Catch any error
          .catch(console.error)
    }
