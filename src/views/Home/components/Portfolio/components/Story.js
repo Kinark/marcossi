@@ -10,7 +10,7 @@ import { Card, CardContent } from '~/components/Card'
 const Story = ({ data, to }) => (
    <div className={`col xs12 l12 ${data.type === 'tale' ? 'xl4' : 'xl8'}`}>
       <Link to={to}>
-         <StoryCard>
+         <StoryCard tale={data.type === 'tale'}>
             <Cover>
                <img src={data.cover.fields.file.url} alt={data.cover.fields.title} />
             </Cover>
