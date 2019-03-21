@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 import { AppContext } from '~/instances/context';
 
@@ -10,7 +11,14 @@ import World from './images/World.svg'
 import Artboard from './images/Artboard.svg'
 import Toolbox from './images/Toolbox.svg'
 
-import styles from './styles.scss';
+// import styles from './styles.scss';
+
+const FeatureImgContainer = styled.div`
+   min-height: 145px;
+   display: flex;
+   justify-content: center;
+   margin-bottom: 10px;
+`
 
 const Features = () => (
    <AppContext.Consumer>
@@ -35,7 +43,7 @@ export default Features
 
 const Feature = ({ img, title, description }) => (
    <div className="col xs12 m4">
-      <div className={styles.featureImgContainer}><img className="block" src={img} alt={title} /></div>
+      <FeatureImgContainer><img className="block" src={img} alt={title} /></FeatureImgContainer>
       <Highlight><h3 className="weight-medium">{title}</h3></Highlight>
       <p>{description}</p>
    </div>
