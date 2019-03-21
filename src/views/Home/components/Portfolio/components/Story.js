@@ -12,18 +12,11 @@ const Story = ({ data, to }) => (
       <Link to={to}>
          <StoryCard>
             <Cover>
-               <img
-                  src={data.cover.fields.file.url}
-                  alt={data.cover.fields.title}
-               />
+               <img src={data.cover.fields.file.url} alt={data.cover.fields.title} />
             </Cover>
             <StoryCardContent>
-               <h2 className="titles-color weight-medium no-mrg-top">
-                  {data.title}
-               </h2>
-               <div className="long-text">
-                  {renderHTML(documentToHtmlString(data.excerpt))}
-               </div>
+               <h2 className="titles-color weight-medium no-mrg-top">{data.title}</h2>
+               <div className="long-text">{renderHTML(documentToHtmlString(data.excerpt))}</div>
             </StoryCardContent>
          </StoryCard>
       </Link>
