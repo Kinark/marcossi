@@ -1,25 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled, { keyframes } from 'styled-components'
 
-import styles from './styles.scss';
+const twists = keyframes`
+   0% {
+      transform: rotate3d(1, 1, 1, 2.5deg);
+   }
+   100% {
+      transform: rotate3d(1, 1, 1, -2.5deg);
+   }
+`
 
-export const Twists = ({ children, className }) => <div className={`${styles.twists} ${className}`}>{children}</div>
-export const TwistsOnHover = ({ children, className }) => <div className={`${styles.twistsOnHover} ${className}`}>{children}</div>
-export const TwistsForeverOnHover = ({ children, className }) => <div className={`${styles.twistsForeverOnHover} ${className}`}>{children}</div>
+const Twists = styled.div`
+   animation: ${twists} 2s linear infinite alternate;
+`
 
-const commonPropTypes = {
-   children: PropTypes.element.isRequired,
-   className: PropTypes.string
-}
+const TwistsOnHover = styled.div`
+   transform: rotate3d(1, 1, 1, 0deg);
+   transition: transform 0.5s ease;
+   :hover {
+      transform: rotate3d(1, 1, 1, 2.5deg);
+   }
+`
 
-const commonDefaultProps = {
-   className: ''
-}
+const TwistsForeverOnHover = styled.div`
+   transform: rotate3d(1, 1, 1, 0deg);
+   transition: transform 1.5s linear;
+   :hover {
+      animation: ${twists} 2s ease-out infinite alternate;
+   }
+`
 
-Twists.propTypes = commonPropTypes
-TwistsOnHover.propTypes = commonPropTypes
-TwistsForeverOnHover.propTypes = commonPropTypes
-
-Twists.defaultProps = commonDefaultProps
-TwistsOnHover.defaultProps = commonDefaultProps
-TwistsForeverOnHover.defaultProps = commonDefaultProps
+export { Twists, TwistsOnHover, TwistsForeverOnHover }
