@@ -1,32 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
-import styles from './styles.scss';
+const Card = styled.div`
+   border-radius: 15px;
+   box-shadow: 0px 10px 25px 0px rgba(32, 33, 44, 0.1);
+   overflow: hidden;
+   margin: 15px 0;
+   background-color: #fff;
+`;
 
-export const Card = ({ children, className, style }) => <div className={`${styles.card} ${className}`} style={style}>{children}</div>
+const CardContent = styled.div`
+   margin: 35px;
+   overflow: hidden;
+   text-overflow: ellipsis;
+`;
 
-Card.propTypes = {
-   children: PropTypes.node.isRequired,
-   className: PropTypes.string,
-   style: PropTypes.shape({}),
-}
-
-Card.defaultProps = {
-   className: '',
-   style: {},
-}
-
-export const CardContent = ({ children, className, style }) => (
-   <div className={`${styles.cardContentWrapper} ${className}`} style={style}>{children}</div>
-)
-
-CardContent.propTypes = {
-   children: PropTypes.node.isRequired,
-   className: PropTypes.string,
-   style: PropTypes.shape({}),
-}
-
-CardContent.defaultProps = {
-   className: '',
-   style: {},
-}
+export { Card, CardContent }
