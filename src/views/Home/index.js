@@ -8,9 +8,7 @@ import Features from './components/Features'
 import Portfolio from './components/Portfolio'
 import Contact from './components/Contact'
 
-import styles from './styles.scss';
-
-const Home = props => (
+const Home = () => (
    <React.Fragment>
       <Logo />
       <Introduction />

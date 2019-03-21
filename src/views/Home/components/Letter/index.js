@@ -6,7 +6,6 @@ import { AppContext } from '~/instances/context';
 import { TwistsOnHover } from '~/components/Twists';
 
 import LetterSvg from './images/Letter.svg'
-// import styles from './styles.scss';
 
 const Letter = () => (
    <AppContext.Consumer>
