@@ -71,8 +71,8 @@ class App extends React.Component {
       if (loading) return <div>Loading...</div>
       return (
          <AppContext.Provider value={{ data, storiesData, title, locale, setStoriesData, setTitle, setLocale }}>
-            {/* <Metas title={title} description={description} /> */}
-            {/* <Favicon /> */}
+            <Metas title="Marcossi Design" description={description} />
+            <Favicon />
             <div style={{ position: 'fixed', top: 0, zIndex: 1 }}>
                <button type="button" onClick={() => setLocale('pt-BR')}>Change pt-BR</button>
                <button type="button" onClick={() => setLocale('en-US')}>Change en-US</button>
