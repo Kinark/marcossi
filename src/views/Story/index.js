@@ -80,7 +80,6 @@ class Story extends React.Component {
    render() {
       const { loading, storyIndex, goBackHome } = this.state
       const { context } = this.props
-      // const { fields } = context.storiesData[storyIndex]
 
       if (goBackHome) return <Redirect to="/" />
       if (loading) return <div>Loading...</div>
