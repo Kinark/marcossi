@@ -8,7 +8,7 @@ import renderHTML from 'react-render-html'
 import { Card, CardContent } from '~/components/Card'
 
 const Story = ({ data, to }) => (
-   <div className={`col xs12 l12 ${data.type === 'tale' ? 'xl4' : 'xl8'}`}>
+   <div className={`col xs12 ${data.type === 'tale' ? 'l4' : 'l8'}`}>
       <Link to={to}>
          <StoryCard tale={data.type === 'tale'}>
             <Cover>
