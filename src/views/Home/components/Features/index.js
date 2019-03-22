@@ -17,6 +17,7 @@ const FeatureImgContainer = styled.div`
    min-height: 145px;
    display: flex;
    justify-content: center;
+   align-items: center;
    margin-bottom: 10px;
 `
 
@@ -28,9 +29,9 @@ const Features = () => (
             <div className="row">
                <div className="col xs12 xl10 offset-xl1">
                   <div className="row xs-row">
-                     <Feature img={World} title={data.features.site.title} description={data.features.site.subtitle} />
-                     <Feature img={Artboard} title={data.features.branding.title} description={data.features.branding.subtitle} />
-                     <Feature img={Toolbox} title={data.features.apps.title} description={data.features.apps.subtitle} />
+                     <Feature img={World} imgHeight="107" title={data.features.site.title} description={data.features.site.subtitle} />
+                     <Feature img={Artboard} imgHeight="138" title={data.features.branding.title} description={data.features.branding.subtitle} />
+                     <Feature img={Toolbox} imgHeight="113" title={data.features.apps.title} description={data.features.apps.subtitle} />
                   </div>
                </div>
             </div>
@@ -41,16 +42,21 @@ const Features = () => (
 
 export default Features
 
-const Feature = ({ img, title, description }) => (
+const Feature = ({ img, title, description, imgHeight }) => (
    <div className="col xs12 m4">
-      <FeatureImgContainer><img className="block" src={img} alt={title} /></FeatureImgContainer>
-      <Highlight><h3 className="weight-medium">{title}</h3></Highlight>
+      <FeatureImgContainer>
+         <img className="block" height={imgHeight} src={img} alt={title} />
+      </FeatureImgContainer>
+      <Highlight>
+         <h3 className="weight-medium">{title}</h3>
+      </Highlight>
       <p>{description}</p>
    </div>
 )
 
 Feature.propTypes = {
    img: PropTypes.string.isRequired,
+   imgHeight: PropTypes.string.isRequired,
    title: PropTypes.string.isRequired,
    description: PropTypes.string.isRequired
 }
