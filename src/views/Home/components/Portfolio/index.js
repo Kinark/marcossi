@@ -54,7 +54,7 @@ class Portfolio extends React.Component {
                <SectionTitle title={context.data.portfolio.title} subtitle={context.data.portfolio.subtitle} />
             </div>
             <div className="row">
-               {context.storiesData.map(story => <Story to={`/story/${speakingurl(story.fields.title)}/${story.sys.id}`} key={story.sys.id} data={story.fields} />)}
+               {context.storiesData.map(story => <Story key={story.sys.id} data={story.fields} />)}
             </div>
          </div>
       );

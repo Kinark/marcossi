@@ -4,12 +4,13 @@ import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
 import renderHTML from 'react-render-html'
+import speakingurl from 'speakingurl'
 
 import { Card, CardContent } from '~/components/Card'
 
-const Story = ({ data, to }) => (
+const Story = ({ data }) => (
    <div className={`col xs12 ${data.type === 'tale' ? 'l4' : 'l8'}`}>
-      <Link to={to}>
+      <Link to={`/story/${speakingurl(data.title)}`}>
          <StoryCard tale={data.type === 'tale'}>
             <Cover>
                <img src={data.cover.fields.file.url} alt={data.cover.fields.title} />
@@ -24,8 +25,7 @@ const Story = ({ data, to }) => (
 )
 
 Story.propTypes = {
-   data: PropTypes.shape({}).isRequired,
-   to: PropTypes.string.isRequired
+   data: PropTypes.shape({}).isRequired
 }
 
 const StoryCard = styled(Card)`

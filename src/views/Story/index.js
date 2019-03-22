@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
+import speakingurl from 'speakingurl'
 
 //
 // ─── INSTANCES ──────────────────────────────────────────────────────────────────
@@ -58,7 +59,7 @@ class Story extends React.Component {
       if (!context.storiesData.length) return false
       // Finds the right Story ID
       await this.setState({
-         storyIndex: context.storiesData.findIndex(story => story.sys.id === match.params.id)
+         storyIndex: context.storiesData.findIndex(story => speakingurl(story.fields.title) === match.params.name)
       })
       // Turns loading false
       this.setState({ loading: false })
