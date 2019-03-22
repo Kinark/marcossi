@@ -78,7 +78,7 @@
       "prop-types": "^15.6.2",
       "react": "^16.6.3",
       "react-dom": "^16.6.3",
-      "react-helmet": "^5.2.0",
+      "react-helmet": "^6.0.0-beta",
       "react-render-html": "^0.6.0",
       "react-router-dom": "^4.3.1",
       "react-router-prop-types": "^1.0.4",
