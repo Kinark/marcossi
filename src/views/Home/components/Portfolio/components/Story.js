@@ -48,7 +48,6 @@ const StoryCard = styled(Card)`
          ${Cover} {
             img {
                width: 100%;
-               height: auto;
                bottom: 0;
                left: 0;
                margin: auto;
@@ -71,7 +70,6 @@ const Cover = styled.div`
    @media (max-width: 767px) {
       img {
          width: 100%;
-         height: auto;
          bottom: 0;
          left: 0;
          margin: auto;

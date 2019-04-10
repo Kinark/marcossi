@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import PropTypes from 'prop-types'
 import { Redirect } from 'react-router-dom'
 import speakingurl from 'speakingurl'
@@ -97,6 +97,15 @@ class Story extends React.Component {
 
 export default withContext(Story)
 
+const fadeIn = keyframes`
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
+`
+
 const StoryModalDimWrapper = styled.div`
    position: fixed;
    width: 100%;
@@ -107,6 +116,7 @@ const StoryModalDimWrapper = styled.div`
    bottom: 0;
    background-color: rgba(0, 0, 0, 0.5);
    overflow-y: auto;
+   animation: ${fadeIn} 0.3s ease-out;
 `
 
 const StoryModal = styled.div`
