@@ -20,7 +20,6 @@ const ActivePill = styled(Pill)`
    width: 125px;
    bottom: 10px;
    right: 10px;
-   cursor: pointer;
 `
 
 const HiddenPill = styled(ActivePill)`
