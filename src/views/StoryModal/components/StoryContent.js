@@ -28,7 +28,7 @@ const storyRenderOptions = {
 const StoryContent = ({ data }) => (
    <React.Fragment>
       <div className="center">
-         <img src={data.logo.fields.file.url} alt={data.title} width="250" />
+         {!!data.logo && <img src={data.logo.fields.file.url} alt={data.title} width="250" />}
          <h2 className="titles-color weight-medium">{data.title}</h2>
       </div>
       <Post className="long-text">
