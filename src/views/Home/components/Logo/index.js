@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import { AppContext } from '~/instances/context'
 
 import Highlight from '~/components/Highlight'
+import Socials from '~/components/Socials'
 
 import logoSvg from './images/Logo.svg'
 
@@ -22,6 +23,7 @@ const Logo = () => (
                <Highlight>
                   <h3>{data.logo.subtitle}</h3>
                </Highlight>
+               <Socials />
             </div>
          </LogoSection>
       )}
