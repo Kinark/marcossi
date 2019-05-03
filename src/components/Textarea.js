@@ -13,7 +13,7 @@ const StyledTextarea = styled.textarea`
    resize: vertical;
 `
 
-export default class Input extends PureComponent {
+export default class Textarea extends PureComponent {
    static propTypes = {
       children: PropTypes.string.isRequired
    }
