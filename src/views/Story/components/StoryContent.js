@@ -15,6 +15,10 @@ const Post = styled.div`
    }
 `
 
+const RoundedImg = styled.img`
+   border-radius: 10px;
+`
+
 const storyRenderOptions = {
    renderNode: {
       [BLOCKS.EMBEDDED_ASSET]: node => `<img src="${node.data.target.fields.file.url}" alt="" />`
@@ -33,7 +37,7 @@ const StoryContent = ({ data }) => (
       {data.type === 'tale' && (
          <Carousel>
             {data.gallery.map(picture => (
-               <img onLoad={() => window.dispatchEvent(new Event('resize'))} key={picture.sys.id} src={picture.fields.file.url} alt="" />
+               <RoundedImg onLoad={() => window.dispatchEvent(new Event('resize'))} key={picture.sys.id} src={picture.fields.file.url} alt="" />
             ))}
          </Carousel>
       )}
