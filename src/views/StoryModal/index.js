@@ -99,6 +99,15 @@ class Story extends React.Component {
 
 export default withContext(Story)
 
+const goUp = keyframes`
+   from {
+      margin-top: 400px;
+   }
+   to {
+      margin-top: 90px;
+   }
+`
+
 const fadeIn = keyframes`
    from {
       opacity: 0;
@@ -134,4 +143,5 @@ const StoryModal = styled.div`
    margin: 90px auto;
    padding: 45px;
    box-shadow: 0px 10px 25px 0px rgba(32, 33, 44, 0.1);
+   animation: ${goUp} 0.5s ease-out;
 `
