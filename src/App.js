@@ -17,7 +17,7 @@ import Favicon from '~/components/Favicon'
 // ─── VIEWS ──────────────────────────────────────────────────────────────────────
 //
 import Home from '~/views/Home'
-import Story from '~/views/Story'
+import StoryModal from '~/views/StoryModal'
 
 //
 // ─── INSTANCES ──────────────────────────────────────────────────────────────────
@@ -82,7 +82,7 @@ class App extends React.Component {
                </button>
             </div>
             <Route path="/" component={Home} />
-            <Route exact path="/story/:name" component={Story} />
+            <Route exact path="/story/:name" component={StoryModal} />
             <div className="screen-detector" />
          </AppContext.Provider>
       )
