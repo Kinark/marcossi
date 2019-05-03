@@ -1,26 +1,31 @@
-import React from 'react';
+import React from 'react'
 import { hot } from 'react-hot-loader'
 import { Route, Switch } from 'react-router-dom'
 
 //
+// ─── SERVICES ───────────────────────────────────────────────────────────────────
+//
+import fetchAppLocale from '~/services/fetchAppLocale'
+
+//
 // ─── COMPONENTS ─────────────────────────────────────────────────────────────────
 //
-import { Metas } from '~/components/Metas';
-import Favicon from '~/components/Favicon';
+import { Metas } from '~/components/Metas'
+import Favicon from '~/components/Favicon'
 
 //
 // ─── VIEWS ──────────────────────────────────────────────────────────────────────
 //
-import Home from '~/views/Home';
-import Story from '~/views/Story';
+import Home from '~/views/Home'
+import Story from '~/views/Story'
 
 //
 // ─── INSTANCES ──────────────────────────────────────────────────────────────────
 //
-import { AppContext } from '~/instances/context';
-import contentfulClient from '~/instances/contentfulClient';
+import { AppContext } from '~/instances/context'
+// import contentfulClient from '~/instances/contentfulClient'
 
-const description = 'A sample website.';
+const description = 'A sample website.'
 // const cover = "";
 
 class App extends React.Component {
@@ -42,21 +47,16 @@ class App extends React.Component {
       if (prevState.locale !== locale) this.fetchAndSetAppData()
    }
 
-   fetchAndSetAppData = () => {
+   fetchAndSetAppData = async () => {
       const { locale } = this.state
-      // Contact contentfulClient to get the pages entries
-      contentfulClient.getEntries({ content_type: 'page', locale })
-         // If found, proceed
-         .then(({ items }) => {
-            // Create an empty object
-            const data = {}
-            // Extracts each page for it's own object
-            items.forEach(entry => { data[entry.fields.pageName] = entry.fields.data });
-            // Set pages data and loading off
-            return this.setState({ data, loading: false });
-         })
-         // Catch any error
-         .catch(console.error)
+      try {
+         // Contact contentfulClient to get the pages entries
+         const data = await fetchAppLocale(locale)
+         // Set pages data and loading off
+         return this.setState({ data, loading: false })
+      } catch (error) {
+         console.error(error)
+      }
    }
 
    setStoriesData = storiesData => this.setState({ storiesData })
@@ -66,7 +66,7 @@ class App extends React.Component {
    setLocale = locale => this.setState({ locale })
 
    render() {
-      const { setStoriesData, setTitle, setLocale, state } = this;
+      const { setStoriesData, setTitle, setLocale, state } = this
       const { data, storiesData, title, locale, loading } = state
       if (loading) return <div>Loading...</div>
       return (
@@ -74,8 +74,12 @@ class App extends React.Component {
             <Metas title="Marcossi Design" description={description} />
             <Favicon />
             <div style={{ position: 'fixed', top: 0, zIndex: 1 }}>
-               <button type="button" onClick={() => setLocale('pt-BR')}>Change pt-BR</button>
-               <button type="button" onClick={() => setLocale('en-US')}>Change en-US</button>
+               <button type="button" onClick={() => setLocale('pt-BR')}>
+                  Change pt-BR
+               </button>
+               <button type="button" onClick={() => setLocale('en-US')}>
+                  Change en-US
+               </button>
             </div>
             <Route path="/" component={Home} />
             <Route exact path="/story/:name" component={Story} />
