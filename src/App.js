@@ -3,6 +3,11 @@ import { hot } from 'react-hot-loader'
 import { Route } from 'react-router-dom'
 
 //
+// ─── CONSTANTS ──────────────────────────────────────────────────────────────────
+//
+import locales from '~/constants/locales'
+
+//
 // ─── SERVICES ───────────────────────────────────────────────────────────────────
 //
 import fetchAppLocale from '~/services/fetchAppLocale'
@@ -12,6 +17,7 @@ import fetchAppLocale from '~/services/fetchAppLocale'
 //
 import { Metas } from '~/components/Metas'
 import Favicon from '~/components/Favicon'
+import ChangeLocaleBtns from '~/components/ChangeLocaleBtns'
 
 //
 // ─── VIEWS ──────────────────────────────────────────────────────────────────────
@@ -33,7 +39,7 @@ class App extends React.Component {
       data: {},
       storiesData: [],
       title: 'Marcossi Design',
-      locale: 'en-US',
+      locale: locales.EN_US,
       loading: true
    }
 
@@ -73,17 +79,10 @@ class App extends React.Component {
          <AppContext.Provider value={{ data, storiesData, title, locale, setStoriesData, setTitle, setLocale }}>
             <Metas title="Marcossi Design" description={description} />
             <Favicon />
-            <div style={{ position: 'fixed', top: 0, zIndex: 1 }}>
-               <button type="button" onClick={() => setLocale('pt-BR')}>
-                  Change pt-BR
-               </button>
-               <button type="button" onClick={() => setLocale('en-US')}>
-                  Change en-US
-               </button>
-            </div>
+            <ChangeLocaleBtns />
             <Route path="/" component={Home} />
             <Route exact path="/story/:name" component={StoryModal} />
-            <div className="screen-detector" />
+            {/* <div className="screen-detector" /> */}
          </AppContext.Provider>
       )
    }
