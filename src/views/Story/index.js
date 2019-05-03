@@ -58,11 +58,13 @@ class Story extends React.Component {
       // Stops if context.storiesData is empty
       if (!context.storiesData.length) return false
       // Finds the right Story ID
-      await this.setState({
-         storyIndex: context.storiesData.findIndex(story => speakingurl(story.fields.title) === match.params.name)
-      })
-      // Turns loading false
-      this.setState({ loading: false })
+      this.setState(
+         {
+            storyIndex: context.storiesData.findIndex(story => speakingurl(story.fields.title) === match.params.name)
+         },
+         // Turns loading false
+         () => this.setState({ loading: false })
+      )
    }
 
    goBackHome = () => this.setState({ goBackHome: true })
@@ -122,7 +124,7 @@ const StoryModalDimWrapper = styled.div`
 const StoryModal = styled.div`
    position: absolute;
    width: 90%;
-   max-width: 850px;
+   max-width: 960px;
    background-color: #f6f6fa;
    border-radius: 15px;
    overflow: hidden;
@@ -130,6 +132,6 @@ const StoryModal = styled.div`
    right: 0;
    top: 0;
    margin: 90px auto;
-   padding: 30px;
+   padding: 45px;
    box-shadow: 0px 10px 25px 0px rgba(32, 33, 44, 0.1);
 `
