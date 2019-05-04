@@ -22,6 +22,7 @@ export default class Contact extends React.PureComponent {
                         </div>
                         <SectionTitle title={data.contact.title} subtitle={data.contact.subtitle} />
                         <form name="contact" method="post">
+                           <input type="hidden" name="form-name" value="contact" />
                            <div className="row">
                               <div className="col xs12 m4">
                                  <Input type="text" name="name">
