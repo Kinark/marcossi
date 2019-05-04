@@ -24,9 +24,11 @@ const ActivePill = styled(Pill)`
 
 const HiddenPill = styled(ActivePill)`
    position: absolute;
-   transition: bottom 300ms ease-out;
+   transition: bottom 300ms ease-out, opacity 300ms ease-out;
+   opacity: 0;
    &.active {
       bottom: 60px;
+      opacity: 1;
    }
 `
 
