@@ -9,7 +9,7 @@ const Highlighted = styled.div`
       content: '';
       position: absolute;
       width: calc(100% + 40px);
-      height: 32px;
+      height: calc(100% + 10px);
       top: 1px;
       left: -20px;
       right: 0;
