@@ -8,6 +8,7 @@ import Carousel from 'nuka-carousel'
 
 const Post = styled.div`
    margin-top: 40px;
+   text-align: justify;
    img {
       width: 100%;
       border-radius: 10px;
