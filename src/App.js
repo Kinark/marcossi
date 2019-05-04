@@ -30,10 +30,8 @@ import Loading from '~/views/Loading'
 // ─── INSTANCES ──────────────────────────────────────────────────────────────────
 //
 import { AppContext } from '~/instances/context'
-// import contentfulClient from '~/instances/contentfulClient'
 
-const description = 'A sample website.'
-// const cover = "";
+import cover from './images/cover.png'
 
 class App extends React.Component {
    state = {
@@ -78,7 +76,7 @@ class App extends React.Component {
       if (loading) return <Loading />
       return (
          <AppContext.Provider value={{ data, storiesData, title, locale, setStoriesData, setTitle, setLocale }}>
-            <Metas title="Marcossi Design" description={description} />
+            <Metas title="Marcossi Design" cover={cover} description="Branding, Sites & Apps :D" />
             <Favicon />
             <ChangeLocaleBtns />
             <Route path="/" component={Home} />
