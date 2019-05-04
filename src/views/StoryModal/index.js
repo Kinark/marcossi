@@ -144,4 +144,8 @@ const StoryModal = styled.div`
    padding: 45px;
    box-shadow: 0px 10px 25px 0px rgba(32, 33, 44, 0.1);
    animation: ${goUp} 0.5s ease-out;
+   @media (max-width: 960px) {
+      width: 95%;
+      padding: 20px;
+   }
 `
