@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import CSSTransitionGroup from 'react-addons-css-transition-group'
+import CSSTransitionGroup from 'react-transition-group'
 import Loader from 'react-loader-spinner'
 import styled from 'styled-components'
 
