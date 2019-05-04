@@ -24,6 +24,7 @@ import ChangeLocaleBtns from '~/components/ChangeLocaleBtns'
 //
 import Home from '~/views/Home'
 import StoryModal from '~/views/StoryModal'
+import Loading from '~/views/Loading'
 
 //
 // ─── INSTANCES ──────────────────────────────────────────────────────────────────
@@ -74,7 +75,7 @@ class App extends React.Component {
    render() {
       const { setStoriesData, setTitle, setLocale, state } = this
       const { data, storiesData, title, locale, loading } = state
-      if (loading) return <div>Loading...</div>
+      if (loading) return <Loading />
       return (
          <AppContext.Provider value={{ data, storiesData, title, locale, setStoriesData, setTitle, setLocale }}>
             <Metas title="Marcossi Design" description={description} />
