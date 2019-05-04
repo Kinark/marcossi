@@ -72,7 +72,7 @@ export const Metas = ({ title, description, cover, url, color }) => (
 Metas.propTypes = {
    title: PropTypes.string,
    description: PropTypes.string,
-   cover: PropTypes.shape({}),
+   cover: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.string]),
    url: PropTypes.string,
    color: PropTypes.string
 }
