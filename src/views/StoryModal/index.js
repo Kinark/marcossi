@@ -9,6 +9,11 @@ import speakingurl from 'speakingurl'
 //
 import { withContext } from '~/instances/context'
 
+//
+// ─── COMPONENTS ─────────────────────────────────────────────────────────────────
+//
+import { Metas } from '~/components/Metas'
+
 import StoryContent from './components/StoryContent'
 
 class Story extends React.Component {
@@ -82,15 +87,15 @@ class Story extends React.Component {
    render() {
       const { loading, storyIndex, goBackHome } = this.state
       const { context } = this.props
-
       if (goBackHome) return <Redirect to="/" />
       if (loading) return <div>Loading...</div>
-
+      const { fields } = context.storiesData[storyIndex]
       return (
          // eslint-disable-next-line jsx-a11y/click-events-have-key-events
          <StoryModalDimWrapper role="button" tabIndex="-1" onClick={this.modalDismissClickHandler}>
+            <Metas cover={fields.cover.fields.file.url} title={fields.title} description={fields.excerpt.content[0].content[0].value} />
             <StoryModal>
-               <StoryContent data={context.storiesData[storyIndex].fields} />
+               <StoryContent data={fields} />
             </StoryModal>
          </StoryModalDimWrapper>
       )
