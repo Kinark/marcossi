@@ -38,7 +38,7 @@ class App extends React.Component {
       data: {},
       storiesData: [],
       title: 'Marcossi Design',
-      locale: locales.EN_US,
+      locale: locales.PT_BR,
       loading: true
    }
 
