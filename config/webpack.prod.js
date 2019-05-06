@@ -8,6 +8,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 const PurifyCSSPlugin = require('purifycss-webpack')
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 
 const merge = require('webpack-merge')
 const common = require('./webpack.common.js')
@@ -45,7 +46,8 @@ module.exports = merge.smart(
          //    paths: glob.sync(path.join(__dirname, '../src/**/*.js')),
          //    purifyOptions: { info: true, minify: true, whitelist: ['*purify*'] }
          // }),
-         new CopyPlugin([{ from: './public/_redirects', to: './' }])
+         new CopyPlugin([{ from: './public/_redirects', to: './' }]),
+         new BundleAnalyzerPlugin({ analyzerMode: 'static' })
       ]
    },
    common
