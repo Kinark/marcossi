@@ -66,7 +66,8 @@ module.exports = {
       ],
       'react/prefer-stateless-function': 'off',
       'implicit-arrow-linebreak': 'off',
-      'operator-linebreak': 'off'
+      'operator-linebreak': 'off',
+      'react/no-danger': 'off'
    },
    plugins: [
       'flowtype',

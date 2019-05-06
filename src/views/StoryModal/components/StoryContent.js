@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { BLOCKS } from '@contentful/rich-text-types'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import renderHTML from 'react-render-html'
+// import renderHTML from 'react-render-html'
 // import Carousel from 'nuka-carousel'
 
 const Post = styled.div`
@@ -33,7 +33,10 @@ const StoryContent = ({ data }) => (
          {!!data.logo && <img src={data.logo.fields.file.url} alt={data.title} width="250" />}
          <h2 className="titles-color weight-medium">{data.title}</h2>
       </div>
-      <Post className="long-text">{renderHTML(documentToHtmlString(data.type === 'story' ? data.post : data.excerpt, storyRenderOptions))}</Post>
+      <Post
+         className="long-text"
+         dangerouslySetInnerHTML={{ __html: documentToHtmlString(data.type === 'story' ? data.post : data.excerpt, storyRenderOptions) }}
+      />
       {data.type === 'tale' &&
          data.gallery.map(picture => (
             <RoundedImg onLoad={() => window.dispatchEvent(new Event('resize'))} key={picture.sys.id} src={picture.fields.file.url} alt="" />

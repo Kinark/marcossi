@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 import { Link } from 'react-router-dom'
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer'
-import renderHTML from 'react-render-html'
+// import renderHTML from 'react-render-html'
 import speakingurl from 'speakingurl'
 
 import { Card, CardContent } from '~/components/Card'
@@ -17,7 +17,7 @@ const Story = ({ data }) => (
             </Cover>
             <StoryCardContent>
                <h2 className="titles-color weight-medium no-mrg-top">{data.title}</h2>
-               <div className="long-text">{renderHTML(documentToHtmlString(data.excerpt))}</div>
+               <div className="long-text" dangerouslySetInnerHTML={{ __html: documentToHtmlString(data.excerpt) }} />
             </StoryCardContent>
          </StoryCard>
       </Link>

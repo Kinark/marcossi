@@ -1,5 +1,5 @@
 import React from 'react'
-import renderHTML from 'react-render-html'
+// import renderHTML from 'react-render-html'
 import styled from 'styled-components'
 
 import { AppContext } from '~/instances/context'
@@ -33,15 +33,9 @@ const Introduction = () => (
                      </TwistsOnHover>
                   </div>
                   <div className="col xs12 l7 xl6">
-                     <h2 className="weight-medium titles-color">
-                        {renderHTML(data.introduction.title)}
-                     </h2>
-                     <h3 className="weight-light titles-color">
-                        {renderHTML(data.introduction.subtitle)}
-                     </h3>
-                     <div className="weight-light long-text">
-                        {renderHTML(data.introduction.text)}
-                     </div>
+                     <h2 className="weight-medium titles-color" dangerouslySetInnerHTML={{ __html: data.introduction.title }} />
+                     <h3 className="weight-light titles-color" dangerouslySetInnerHTML={{ __html: data.introduction.subtitle }} />
+                     <div className="weight-light long-text" dangerouslySetInnerHTML={{ __html: data.introduction.text }} />
                   </div>
                </div>
             </div>

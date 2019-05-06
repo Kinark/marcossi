@@ -1,5 +1,5 @@
 import React from 'react';
-import renderHTML from 'react-render-html';
+// import renderHTML from 'react-render-html';
 
 import { AppContext } from '~/instances/context';
 
@@ -14,11 +14,13 @@ const Letter = () => (
             <div className="row xs-middle">
                <div className="col xs12 l7 xl6">
                   <h2 className="weight-medium titles-color">{data.letter.title}</h2>
-                  <div className="weight-light long-text">{renderHTML(data.letter.text)}</div>
+                  <div className="weight-light long-text" dangerouslySetInnerHTML={{ __html: data.letter.text }} />
                   <div className="right-align">{data.letter.credits}</div>
                </div>
                <div className="col xs12 l5 xl6 xs-first l-last center">
-                  <TwistsOnHover><img src={LetterSvg} alt="A Letter" /></TwistsOnHover>
+                  <TwistsOnHover>
+                     <img src={LetterSvg} alt="A Letter" />
+                  </TwistsOnHover>
                </div>
             </div>
          </div>
