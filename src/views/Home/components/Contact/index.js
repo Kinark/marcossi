@@ -25,12 +25,12 @@ export default class Contact extends React.PureComponent {
                            <input type="hidden" name="form-name" value="contact" />
                            <div className="row">
                               <div className="col xs12 m4">
-                                 <Input type="text" name="name">
+                                 <Input type="text" name="name" required>
                                     {data.contact.inputs.name}
                                  </Input>
                               </div>
                               <div className="col xs12 m4">
-                                 <Input type="email" name="email">
+                                 <Input type="email" name="email" required>
                                     {data.contact.inputs.email}
                                  </Input>
                               </div>
@@ -42,7 +42,7 @@ export default class Contact extends React.PureComponent {
                            </div>
                            <div className="row">
                               <div className="col xs12">
-                                 <Textarea type="text" name="message">
+                                 <Textarea type="text" name="message" required>
                                     {data.contact.inputs.message}
                                  </Textarea>
                               </div>
