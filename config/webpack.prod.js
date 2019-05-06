@@ -47,7 +47,7 @@ module.exports = merge.smart(
          //    purifyOptions: { info: true, minify: true, whitelist: ['*purify*'] }
          // }),
          new CopyPlugin([{ from: './public/_redirects', to: './' }]),
-         new BundleAnalyzerPlugin({ analyzerMode: 'static' })
+         new BundleAnalyzerPlugin({ analyzerMode: 'static', openAnalyzer: false })
       ]
    },
    common
